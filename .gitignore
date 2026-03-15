@@ -1,0 +1,22 @@
+# Rust
+/target
+**/*.rs.bk
+
+# Node.js (GUI)
+sovd-gui/node_modules/
+sovd-gui/dist/
+
+# IDE
+*.swp
+*.swo
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / Secrets
+.env
+.env.*

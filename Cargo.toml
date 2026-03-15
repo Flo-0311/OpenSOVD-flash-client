@@ -1,0 +1,80 @@
+[workspace]
+members = [
+    "crates/sovd-core",
+    "crates/sovd-client",
+    "crates/sovd-plugin",
+    "crates/sovd-workflow",
+    "crates/sovd-observe",
+    "crates/sovd-cli",
+    "plugins/example-plugin",
+    "sovd-gui/src-tauri",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/rettde/OpenSOVD-flash-client"
+homepage = "https://github.com/rettde/OpenSOVD-flash-client"
+authors = ["OpenSOVD Flash Client Contributors"]
+
+[workspace.dependencies]
+sovd-core = { path = "crates/sovd-core" }
+sovd-client = { path = "crates/sovd-client" }
+sovd-plugin = { path = "crates/sovd-plugin" }
+sovd-workflow = { path = "crates/sovd-workflow" }
+sovd-observe = { path = "crates/sovd-observe" }
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# HTTP
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# CLI
+clap = { version = "4", features = ["derive", "env"] }
+
+# Logging & Tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# Plugin loading
+libloading = "0.8"
+
+# Async trait
+async-trait = "0.1"
+
+# UUID
+uuid = { version = "1", features = ["v4", "serde"] }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# URL
+url = "2"
+percent-encoding = "2"
+
+# Progress
+indicatif = "0.17"
+
+# Interactive
+dialoguer = "0.11"
+
+# Secrets (zeroize-on-drop for auth tokens)
+secrecy = "0.10"
+
+# Config
+toml = "0.8"
+dirs = "5"
+
+# Testing
+wiremock = "0.6"

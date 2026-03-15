@@ -1,0 +1,24 @@
+# OpenSOVD Flash Client — Code Owners
+#
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: repository maintainer
+*                           @rettde
+
+# Documentation
+/docs/                      @rettde
+/ARCHITECTURE.md            @rettde
+
+# Core crates
+/crates/sovd-core/          @rettde
+/crates/sovd-client/        @rettde
+/crates/sovd-plugin/        @rettde
+/crates/sovd-workflow/       @rettde
+/crates/sovd-observe/       @rettde
+/crates/sovd-cli/           @rettde
+
+# GUI
+/sovd-gui/                  @rettde
+
+# CI / Infrastructure
+/.github/                   @rettde

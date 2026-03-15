@@ -1,0 +1,31 @@
+[package]
+name = "sovd-cli"
+description = "CLI application for the OpenSOVD Flash Client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "sovd-flash"
+path = "src/main.rs"
+
+[dependencies]
+sovd-core = { workspace = true }
+sovd-client = { workspace = true }
+sovd-plugin = { workspace = true }
+sovd-workflow = { workspace = true }
+sovd-observe = { workspace = true }
+tokio = { workspace = true }
+clap = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+indicatif = { workspace = true }
+dialoguer = { workspace = true }
+toml = { workspace = true }
+dirs = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+url = { workspace = true }

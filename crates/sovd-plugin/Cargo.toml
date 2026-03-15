@@ -1,0 +1,15 @@
+[package]
+name = "sovd-plugin"
+description = "Plugin runtime and trait definitions for OpenSOVD Flash Client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+sovd-core = { workspace = true }
+async-trait = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+libloading = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }

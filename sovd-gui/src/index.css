@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --radius: 0.5rem;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus-visible for keyboard navigation (a11y) */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-border;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+
+  /* Text selection */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer components {
+  /* Clickable card with lift effect */
+  .card-interactive {
+    @apply rounded-lg border bg-card p-4 transition-all duration-200;
+  }
+  .card-interactive:hover {
+    @apply border-primary/30 shadow-md;
+    transform: translateY(-1px);
+  }
+  .card-interactive:active {
+    transform: translateY(0);
+  }
+
+  /* Consistent badge styling */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+  .badge-success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200;
+  }
+  .badge-error {
+    @apply bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-200;
+  }
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-200;
+  }
+  .badge-info {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-200;
+  }
+  .badge-neutral {
+    @apply bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300;
+  }
+  .badge-orange {
+    @apply bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-200;
+  }
+
+  /* Consistent button base */
+  .btn {
+    @apply inline-flex h-9 items-center justify-center gap-2 rounded-md px-4 text-sm font-medium transition-colors
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+      disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  .btn-secondary {
+    @apply btn border bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+  .btn-destructive {
+    @apply btn bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
+  .btn-ghost {
+    @apply btn hover:bg-accent hover:text-accent-foreground;
+  }
+  .btn-sm {
+    @apply h-8 px-3 text-xs;
+  }
+
+  /* Input base */
+  .input {
+    @apply h-9 rounded-md border bg-background px-3 text-sm transition-colors
+      placeholder:text-muted-foreground
+      focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Page header */
+  .page-header {
+    @apply flex items-center justify-between;
+  }
+  .page-title {
+    @apply text-2xl font-bold tracking-tight;
+  }
+  .page-description {
+    @apply mt-1 text-sm text-muted-foreground;
+  }
+}
+
+/* ============================================
+   Compact Mode — smaller spacing & fonts
+   ============================================ */
+.compact main {
+  padding: 1rem !important;
+}
+.compact .page-title {
+  font-size: 1.25rem !important;
+}
+.compact .page-description {
+  font-size: 0.75rem !important;
+  margin-top: 0.125rem !important;
+}
+.compact table th,
+.compact table td {
+  padding: 0.375rem 0.75rem !important;
+}
+.compact .card-interactive {
+  padding: 0.625rem !important;
+}
+.compact .space-y-6 > * + * {
+  margin-top: 1rem !important;
+}
+.compact .space-y-4 > * + * {
+  margin-top: 0.625rem !important;
+}
+.compact .space-y-3 > * + * {
+  margin-top: 0.5rem !important;
+}
+.compact .rounded-lg.border.p-6,
+.compact .rounded-lg.border.p-5 {
+  padding: 0.875rem !important;
+}
+.compact .rounded-lg.border.p-8 {
+  padding: 1rem !important;
+}
+.compact .rounded-lg.border.p-4 {
+  padding: 0.625rem !important;
+}
+.compact .p-12 {
+  padding: 2rem !important;
+}
+.compact .btn {
+  height: 2rem !important;
+  padding-left: 0.625rem !important;
+  padding-right: 0.625rem !important;
+  font-size: 0.75rem !important;
+}
+.compact .btn-sm {
+  height: 1.625rem !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  font-size: 0.6875rem !important;
+}
+.compact .input {
+  height: 2rem !important;
+  font-size: 0.75rem !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+.compact .badge {
+  padding: 0.125rem 0.375rem !important;
+  font-size: 0.625rem !important;
+}
+.compact nav.space-y-0\.5 > a {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  font-size: 0.8125rem !important;
+}
+.compact .grid.gap-3 {
+  gap: 0.5rem !important;
+}
+.compact .text-2xl {
+  font-size: 1.25rem !important;
+}
+.compact .text-3xl {
+  font-size: 1.5rem !important;
+}
+.compact footer {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+  font-size: 0.625rem !important;
+}
+
+@layer utilities {
+  /* Fade-in animation for page transitions */
+  .animate-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Slide-down for toasts */
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Pulse for live indicators */
+  .animate-pulse-dot {
+    animation: pulseDot 2s ease-in-out infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+}
