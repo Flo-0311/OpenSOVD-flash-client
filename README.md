@@ -1,3 +1,14 @@
+## Quck start
+
+sudo docker build -f Dockerfile.mock -t sovd-mock:latest
+
+sudo docker run -p 8080:8080 sovd-mock:latest
+npm run tauri dev
+
+
+
+
+
 # OpenSOVD Flash Client
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)

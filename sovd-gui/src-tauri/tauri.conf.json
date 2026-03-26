@@ -4,11 +4,10 @@
   "version": "0.1.0",
   "identifier": "org.eclipse.opensovd.flash-client",
   "build": {
-    "frontendDist": "../dist",
-    "devUrl": "http://localhost:1420",
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build"
-  },
+  "frontendDist": "../dist",
+  "devUrl": null,
+  "beforeBuildCommand": "npm run build"
+},
   "app": {
     "windows": [
       {
